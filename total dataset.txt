@@ -1,0 +1,499 @@
+---
+
+author: "H.A.S.I.Madhuwanthi - AS2018431"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+<center> <h1> COVID-19 PANDEMIC IN ALGERIA</h1> </center>
+
+```{css, echo=FALSE}
+h1 {
+  text-align: center;
+  color:purple;
+  font-weight: bold;
+}
+```
+
+```{css, echo=FALSE}
+ h2 {
+  
+  color: orange;
+  font-weight: bold;
+}
+```
+
+```{css, echo=FALSE}
+ h3 {
+  
+  color: red;
+  font-weight: bold;
+}
+```
+```{css, echo=FALSE}
+ h4 {
+  
+  color: blue;
+  font-weight: bold;
+}
+```
+
+```{css, echo=FALSE}
+ h5 {
+  
+  color: pink;
+  font-weight: bold;
+}
+```
+
+
+## **Covid - 19**
+
+Coronaviruses (CoV) are a large family of viruses that cause illness ranging from the common cold to more severe diseases. A novel coronavirus (nCoV) is a new strain that has not been previously identified in humans. The new virus was subsequently named the “COVID-19 virus”. 
+On 31 December 2019, WHO was informed of cases of pneumonia of unknown cause in Wuhan City, China. A novel corona virus was identified as the cause by Chinese authorities on 7 January 2020 and was temporarily named “2019-nCoV”.
+On 11 March 2020, the rapid increase in the number of cases outside China led the WHO Director-General to announce that the outbreak could be characterized as a pandemic. By then more than 118 000 cases had been reported in 114 countries, and 4291 deaths had been recorded.
+In order to that the virus has being spreading over the whole world until now(2021 september),We cannot strictly predict when covid-19 will end.     
+
+
+
+
+<center>
+![](covid-tales.jpg){width=50%}
+
+<br>
+
+Let's focus about the covid-19 in **Algeria.**
+</br>
+
+</center>
+
+
+# **ALGERIA**
+
+<center>
+![](AlgeriaMonitor2020.jpg){width=50%}
+</center>
+
+
+
+
+
+
+
+ 
+### **1. Visualization of the location**         
+
+ Algeria, is a country in the Maghreb region of North Africa. It is the largest country by total area in Africa, and by extension, the Arab world, and is bordered to the northeast by Tunisia; to the east by Libya; to the southeast by Niger; to the southwest by Mali, Mauritania, and Western Sahara; to the west by Morocco; and to the north by the Mediterranean Sea. The country has a semi-arid geography, with most of the population living in the fertile north and the Sahara dominating the geography of the south. Algeria covers an area of 2,381,741 square kilometres (919,595 sq mi), making it the world's tenth largest nation by area. With a population of 44 million, and is the ninth-most populous country in Africa. The capital and largest city is Algiers, located in the far north on the Mediterranean coast.
+
+Pre-1962 Algeria has seen many empires and dynasties, including ancient Numidians, Phoenicians, Carthaginians, Romans, Vandals, Byzantines, Umayyads, Abbasids, Rustamid, Idrisid, Aghlabids, Fatimids, Zirid, Hammadids, Almoravids, Almohads, Zayyanids, Spaniards, Ottomans and finally, the French Colonial Empire. The vast majority of Algeria's population is Arab-Berber, practicing Islam, and using the official languages of Arabic and Berber. However, French serves as an administrative and education language in some contexts, and Algerian Arabic is the main spoken language.
+
+Algeria is a semi-presidential republic, with local constituencies consisting of 58 provinces and 1,541 communes. Algeria is a regional power in North Africa, and a middle power in global affairs. It has the highest Human Development Index of all non-island African countries and one of the largest economies on the continent, based largely on energy exports. Algeria has the world's sixteenth-largest oil reserves and the ninth-largest reserves of natural gas. Sonatrach, the national oil company, is the largest company in Africa, supplying large amounts of natural gas to Europe. Algeria's military is one of the largest in Africa, and has the largest defence budget on the continent. It is a member of the African Union, the Arab League, OPEC, the United Nations, and the Arab Maghreb Union, of which it is a founding member.       
+        
+        
+
+
+```{r message=FALSE, warning=FALSE,echo=FALSE}
+
+library( devtools)
+library(sta3262)
+library(coronavirus)
+library(tidyverse)
+library(magrittr)
+algeria_corona <- coronavirus %>% filter(country == "Algeria")
+library(ggplot2)
+library(maptools)
+library(tibble)
+library(tidyverse)
+library(ggrepel)
+library(png)
+library(grid)
+library(sp)
+data(wrld_simpl)
+
+p <- ggplot() +
+  geom_polygon(
+    data = wrld_simpl,
+    aes(x = long, y = lat, group = group), fill = " light pink", colour = "black"
+  ) +
+  coord_cartesian(xlim = c(-180, 180), ylim = c(-90, 90)) +
+  scale_x_continuous(breaks = seq(-180, 180, 120)) +
+  scale_y_continuous(breaks = seq(-90, 90, 100))
+
+p +
+  geom_point(
+    data = algeria_corona, aes(x = long, y = lat), color = "blue", size
+    = 5
+  )
+ 
+```
+
+
+
+
+### **2. Climate and weather condition**
+Algeria is one of the largest countries on the African continent and has to deal with fairly large differences in climate. Algeria is is known for its Sahara desert, oases and the Atlas Mountains. The country consists for around 85% of desert. It has a long coastline and the coastal areas have a mild Mediterranean climate with hot summers and cool and rainy winters. In the highlands summers are hot and dry. Winter rains (less heavy then the coast) in the highlands begin in October. In the months January, February and March there are many sandstorms. 
+Northern Algeria lies within the temperate zone, and its climate is similar to that of other Mediterranean countries, although the diversity of the relief provides sharp contrasts in temperature. The coastal region has a pleasant climate, with winter temperatures averaging from 10° to 12° C (50° to 54° F ) and average summer temperatures ranging from 24° to 26° C (75° to 79° F ). Rainfall in this region is abundant—38 to 69 cm (15 to 27 in) per year, and up to 100 cm (40 in) in the eastern part—except in the area around Oran (Ouahran), where mountains form a barrier against rain-carrying winds. When heavy rains fall (often more than 3.8 cm/1.5 in within 24 hours), they flood large areas and then evaporate so quickly that they are of little help in cultivation.
+
+Farther inland, the climate changes; winters average 4° to 6° C (39° to 43° F ), with considerable frost and occasional snow on the massifs; summers average 26° to 28° C (79° to 82° F ). In this region, prevailing winds are westerly and northerly in winter and easterly and northeasterly in summer, resulting in a general increase in precipitation from September to December and a decrease from January to August; there is little or no rainfall in the summer months.
+
+In the Sahara Desert, temperatures range from –10° to 34° C (14° to 93° F ), with extreme highs of 49° C (120° F ). There are daily variations of more than 44° C (80° F ). Winds are frequent and violent. Rainfall is irregular and unevenly distributed.
+
+The rains are quite abundant. They vary according to the areas between 1.000 mm in the eastern areas (Grande Kabylia, Piccola Kabylia and Djebel Edough) and 400 mm in the western areas (Piana di Chelif, Aurès and Amour mountains).
+In the spring months, particularly in April, a warm wind sometimes blows from the desert, the sirocco that transports large quantities of sand from the desert, causing intense sand storms and a sharp rise in temperature.
+Algers is the capital and the largest city in algeria.Let's check there whether,Because the algeria whether is not same fr everywhere in algeria,hence it's too big country.
+
+
+####ALGERS (25 meters) 
+
+
+
+
+*Month*    | *Average low (°C)*  | *Average   high (°C)* | *Precip. (mm)*  | *Precip. days*
+---------- | -------------       | ---------------       | ------------    | --------------
+ January	 |       5,5	         |         16,7	         |      81,4	     |      11,4
+ February	 |       5,9	         |         17,4	         |      72,7	     |      10,6
+ March	   |       7,1	         |         19,3	         |      55,0	     |       9,7
+ April	   |       8,8	         |         20,9	         |      58,4	     |       9,1
+ May	     |      12,3	         |         23,9	         |      41,9	     |       7,3
+ June 	   |      16,1	         |         28,2	         |       8,5	     |       2,5
+ July	     |      18,9	         |         31,2	         |       4,5	     |       1,5
+ August	   |      19,8	         |         32,2	         |       8,2	     |       2,5
+ September |      17,6	         |         29,6	         |      28,3	     |       5,3
+ October	 |      14,2	         |         25,2	         |      58,8	     |       8,6
+ November	 |       9,8	         |         20,8	         |      89,6	     |      11,1
+ December	 |       7,2	         |         17,9	         |      91,0	     |      12,1
+ YEAR	     |      11,9	         |         23,7	         |     598,3	     |      91,7
+ 
+
+### **3. Lockdown states of the country**      
+
+* 13 September 2021 : Authorities announce the softening of lockdown measures    
+
++ 24  August 2021 : Authorities announce the softening of lockdown measures   
+
++ 14  August 2021 : Authorities announce the extension of curfew   
+
++ 04  August 2021 : Authorities announce the extension of curfew for an additional 10 days
++ 25 July 2021 : Authorities announce the tightening and extension of the curfew and introduce new lockdown measures
++ 19 July 2021 : Authorities announce the tightening and extension of the curfew
++ 11 July 2021 : Authorities announce the extension of curfew for an additional 21 days
++ 20 June 2021 : Authorities announce the extension of curfew for an additional 21 days
++ 20 May 2021 : Authorities announce the extension of curfew for an additional month
++ 16 May 2021 : Authorities announce that borders will partially re-open from 1st June 2021.    Five international flights will be permitted each day.
++ 02 January 2021 : Authorities announce the extension of lockdown measures and the lifting of  ban on transport between wilayas
++ 30 November 2020 : Authorities announce the extension of lockdown measures and the lifting   of  the ban on domestic flights from 6th December onward
++ 08 November 2020 : Authorities announce a tightening of the curfew
++ 1 September 2020 : Crèches and libraries authorised to reopen
++  August 2020 : Mosques, beaches, parks and restaurants reopen
++ 03 August 2020 : The government softens curfew measures and lifts a travel ban on 29 wilayas
++ 09 July 2020 : Authorities introduce additional restrictions on movements between and within  wilayas
++ 07 July 2020 : Authorities introduce first regional lockdown measures
++ 14 June 2020: Lockdown and curfew loosened for some wilayas. Some additional commercial       activities, services and public transport re-authorised
++ 07 June 2020: Some commercial activities and services re-authorised
++ 11 May 2020: The Minister of Health  states that lockdown measures will be ended once  ‘the   number of new cases has been reduced to less worrying levels and the number of deaths is 
+  close to zero’.
+ + 23 March 2020: Authorities announce additional containment measures following a meeting of   the High Security Council
++ 22 March 2020: The Minister of Health announces that Algeria has now entered phase 3 of the   epidemic
++ 19 March 2020: Authorities announce additional containment measures following a high-level    meeting focussing on the covid-19 crisis
++ 17 March 2020: President Tebboune addresses the nation and summarises the steps taken by the   government to combat the spread of covid-19. President Tebboune announces a number of         significant new measures in addition to maintaining some exisiting measures and extending     others.
++ 13 March 2020: The first case of covid-19 is confirmed in the capital city Algiers and in     other areas of the country
++ 12 March 2020: The first death of a patient diagnosed with covid-19 is confirmed in the       wilaya of Blida
++ 03 March 2020: Additional cases begin to emerge in Blida after those who came into contact    with the confirmed case are traced
++ 01 March 2020: An Algerian residing in France is diagnosed with covid-19 while visiting       family in the wilaya of Blida, northern Algeria
++ 25 February 2020: The first case of covid-19 is diagnosed in Algeria. The case involves an    Italian national working at the Menzel Ledjmet-Est (MLE) gas field in Ouargla, southern       Algeria. The patient is repatriated to Italy and living quarters at the gas field are placed   on lock-down. No additional related cases are reported
+ +03 February 2020: Algerian authorities repatriate 31 Algerians along with 17 Tunisians,       Libyans and Mauritanians from Wuhan (China). The evacuees are placed in quarantine and are    released after testing negative for the virus
+
+#### Transport & travel
+
+##### Air, sea and land transportation     
+
+Algeria’s land borders are closed from 17th March 2020 until further notice    
+All ferry services are suspended from 17th March 2020 until further notice. Cargo shipping will continue    
+International flights & entry requirements
+
+##### Boarding conditions for travelling to Algeria
+
+Present a negative PCR test completed less than 36 hours before the date of travel     
+Present a valid ticket and completed health form      
+Lockdown & curfew       
+In the wilayas of Ain Temouchent, Algiers, Annaba, Batna, Béchar, Bejaia, Blida, Bouira, Boumerdes, Constantine, El Bayadh, El Oued, Guelma, Jijel, Khenchela, Laghouat, Mostaganem, M’Sila, Naâma, Oran, Ouargla, Oum El Bouaghi, Relizane, Saïda, Sétif, Sidi Bel Abbes, Skikda, Souk Ahras, Tebessa, Tlemcen and Tizi Ouzou:     
+
+A curfew from 10pm to 5am      
+
+Closures and cancellations:     
+
+
+* Sports facilities and sporting competitions are authorised to open as long as all staff hold   vaccine passports.               
+* Across the entire country, any kind of gathering, including family gatherings such as weddings and circumcision parties, are banned.       
+* Any party venues that violate the ban on gatherings will have their operating licenses permanently withdrawn      
+* A mandatory ‘safe distance’ of at least one metre between any two people must be respected in any establishment open to the public     
+* All marches and gatherings are prohibited throughout Algeria from 17th March 2020 until further notice       
+
+
+*Other emergency measures*
+
+It is compulsory to wear a face mask in all  closed or open public spaces such as public administrations, markets, souks, cemeteries, shops, car parks (parking lots) and shared or private vehicles. Failure to wear a face mask will be penalised.
+Tax and financial measures
+
+
+
+### **4. Actions taken by the government of Algeria**
+
+Algiers – Algeria’s Health ministry, the Delegation of the European Union (EU) in Algeria and the United Nations Development Programme (UNDP) are implementing a €43 million (US$50 million) agreement signed in December last year to support the Algerian Government’s efforts to curb the spread of the Coronavirus pandemic in the country and mitigate its impact.
+
+The project “European Solidarity Response to COVID-19 in Algeria” will provide public health facilities with medical equipment, covid testing kits and protective gear for healthcare workers. The first shipments of testing kits received this week will be distributed to health facilities by the publicly administered Central Pharmacy of Hospitals and Pasteur Institute Algeria, which coordinate the project on behalf of the Health Ministry.
+
+##### future plans for covid-19 situation
+
+[ 14/09 - 17:02 ]
+Algeria's Prime Minister Aïmene Benabderrahmane, has presented his government's action plan to parliament vowing that its implementation would be done by the adoption of sectoral "roadmaps" developed by each ministerial department.
+
+Benabderrahmane presented the plan to parliament on Monday. He also explained that a "mechanism for monitoring and evaluation of implementation" will be established.
+
+"The government will work on strengthening freedoms and modernising the judiciary by establishing its independence and efficiency through the revision of organic laws relating to the judiciary and the National Council of the Judiciary, which will be installed before the end of the current year." Aymen Benabderrahmane told Parliament. Algerian Prime Minister and Finance Minister
+
+Benabderrahmane doubles as both Prime minister and Minister of finance. The 60-year-old is tasked with forming a new government as the country seeks to curb a deep socioeconomic crisis.
+
+He was appointed to replace Abdelaziz Djerad who resigned following a parliamentary election on June 12.
+
+Algeria an OPEC member has been under financial pressure due to lower oil and gas revenues, the main source of state finances.
+
+The crisis worsened during the COVID-19 pandemic, forcing the government to delay several planned projects in various sectors.
+
+According to World Bank figures, unemployment stands at more than 12 percent.
+
+### **5. Vaccination in Algeria**  
+
+On 29 January 2021, Algeria launched a coronavirus vaccination campaign, a day after receiving its first shipment of 50,000 doses of the Russia's Sputnik V vaccine. As of 6 June 2021, around 2.5 million doses have been administered.Algeria is currently vaccinating its population with both Sputnik V and Oxford-AstraZeneca    
+
+
+<center>
+![](vaccine.jpg){width=50%}
+</center>
+
+##### DOSES RECEIVED
+
++ AstraZeneca (AZD1222) vaccine*: 1,881,600
+  (donated by Denmark): 57,600
++ Sinovac vaccine: 567,600 J&J
++ Janssen vaccine (donated by USA): 604,800
+
+
+Total doses given           | 	9.99M         
+People fully vaccinated	    |   4.17M      
+% fully vaccinated	        |   9.7%     
+
+
+# **DATA ANALYSIS OF ALGERIA COVID-19 SITUATION**
+
+### **1.Visualization of death,confirmed and recovered cases**    
+
+
+
+
+```{r,include=FALSE,echo=FALSE}
+algeria_corona[algeria_corona < 0]
+algeria_corona$cases <- abs(algeria_corona$cases)
+algeria_corona
+view(algeria_corona)
+filter(algeria_corona,cases >=0)
+view(filter(algeria_corona,cases >=0))
+algeria_new <- filter(algeria_corona,cases >=0)
+algeria_new
+view(algeria_new)
+
+
+```
+
+
+
+
+#### Recovered cases
+
+<center>
+```{r message=FALSE, warning=FALSE,echo=FALSE}
+recovery_algeria_corona <- algeria_new %>% filter(type=="recovered")
+head(recovery_algeria_corona)
+tail(recovery_algeria_corona)
+
+ggplot(recovery_algeria_corona, aes(x=date, y=cases)) + geom_line() + ggtitle("Algeria : Daily Covid-19 Recoveries")
+  
+```
+<center>  
+
+
+#### Confirmed cases
+
+
+<center>
+```{r message=FALSE, warning=FALSE,echo=FALSE}
+confirmed_algeria_corona <- algeria_new %>% filter(type=="confirmed")
+head(confirmed_algeria_corona)
+tail(confirmed_algeria_corona)
+
+ggplot(confirmed_algeria_corona, aes(x=date, y=cases)) + geom_line() + ggtitle("Algeria : Daily Covid-19 Confirmed cases")
+  
+```
+
+
+#### Death cases    
+
+<center>
+```{r message=FALSE, warning=FALSE,echo=FALSE}
+death_algeria_corona <- algeria_new  %>% filter(type=="death")
+head(death_algeria_corona)
+tail(death_algeria_corona)
+
+ggplot(death_algeria_corona, aes(x=date, y=cases)) + geom_line() + ggtitle("Algeria : Daily Covid-19  Death cases")
+  
+```
+<center>   
+
+
+
+```{r, comment=NA,message=FALSE, echo=FALSE}
+ggplot(algeria_new,aes(x=date, y=cases, colour=type)) + geom_path(size=1) + labs(title="Algeria : Daily Covid-19  Recovaries , Confirmed and Death cases")
+```
+
+
+
+## **2.COMPARISON WITH OTHER COUNTRIES**
+
+I found Brazil,Italy and Libya  for compare with Algeria.These countries are close to the Algeria.Therefore we can conclude that the sunlight,wind,whether and etc.. are approximately same in those countries.   
+
+
+<center>
+![](world-map.jpg){width=75%}
+
+</center>
+
+
+
+
+
+
+```{r message=FALSE, warning=FALSE,echo=FALSE}
+
+brazil_corona <- coronavirus %>% filter(country == "Brazil")
+libya_corona <- coronavirus %>% filter(country == "Libya")
+italy_corona <- coronavirus %>% filter(country == "Italy")
+```
+
+```{r,include=FALSE,echo=FALSE}
+brazil_corona[brazil_corona < 0]
+brazil_corona$cases <- abs(brazil_corona$cases)
+brazil_corona
+view(brazil_corona)
+filter(brazil_corona,cases >=0)
+view(filter(brazil_corona,cases >=0))
+brazil_new <- filter(brazil_corona,cases >=0)
+brazil_new
+view(brazil_new)
+
+
+```
+
+
+```{r,include=FALSE,echo=FALSE}
+libya_corona[algeria_corona < 0]
+libya_corona$cases <- abs(libya_corona$cases)
+libya_corona
+view(libya_corona)
+filter(libya_corona,cases >=0)
+view(filter(libya_corona,cases >=0))
+libya_new <- filter(libya_corona,cases >=0)
+libya_new
+view(libya_new)
+
+
+```
+
+
+```{r,include=FALSE,echo=FALSE}
+italy_corona[italy_corona < 0]
+italy_corona$cases <- abs(italy_corona$cases)
+italy_corona
+view(italy_corona)
+filter(italy_corona,cases >=0)
+view(filter(italy_corona,cases >=0))
+italy_new <- filter(italy_corona,cases >=0)
+italy_new
+view(italy_new)
+
+
+```
+
+```{r,messege=FALSE,echo=FALSE}
+
+
+alg_corona <- filter(algeria_new)
+
+myCountries <- as.data.frame(rbind(algeria_new,italy_new,brazil_new,libya_new))
+
+mycountries_confirmed <- myCountries%>%filter(type == "confirmed")
+
+mycountries_recovery <- myCountries%>%filter(type == "recovered")
+
+mycountries_death <- myCountries%>%filter(type == "death")
+
+```
+
+```{r,echo=FALSE}
+ggplot(mycountries_confirmed,
+       aes(x=date,y=cases,fill=type,col=country))+
+  geom_line()+geom_point()+ 
+  facet_wrap(~country,ncol = 4)+coord_flip()+
+  ggtitle("Comparison between the confirmed covid-19cases between Brazil,Italy and Libya")
+
+
+```
+
+```{r,echo=FALSE}
+ggplot(mycountries_recovery,
+       aes(x=date,y=cases,fill=type,col=country))+
+  geom_line()+geom_point()+ 
+  facet_wrap(~country,ncol = 4)+coord_flip()+
+  ggtitle("Comparison between the recoverd covid-19  between the Brazil,Italy and Libya")
+
+
+```
+
+```{r,echo=FALSE}
+ggplot(mycountries_death,
+       aes(x=date,y=cases,fill=type,col=country))+
+  geom_line()+geom_point()+ 
+  facet_wrap(~country,ncol = 4)+coord_flip()+
+  ggtitle("Comparison between the  covid-19 Algeria  between the Brazil,Italy and Libya")
+
+
+```
+
+
+
+# **CONCLUSION AND DISCUSSION**
+
+
+## **References**
+
+1.https://www.euro.who.int/en/health-topics/health-emergencies/coronavirus-covid-19/novel-coronavirus-2019-ncov  
+2.https://www.nationsencyclopedia.com/Africa/Algeria-CLIMATE.html
+3.https://www.travelguide-en.org/algeria-climate/ 
+4.https://www.theguardian.com/environment/2015/aug/24/algeria-to-experience-more-heat-waves-due-to-climate-change-says-specialist      
+5.https://itriinsights.com/en/coronavirus-algerie/
+6.https://www.africanews.com/2021/09/14/algeria-prime-minister-presents-government-s-action-plan-to-parliament/
+7.https://en.wikipedia.org/wiki/COVID-19_vaccination_in_Algeria
+8.https://www.gavi.org/covax-vaccine-roll-out/algeria?gclid=Cj0KCQjw18WKBhCUARIsAFiW7Jxk_3nvJUea4jraDTBJQjIlH4XZF_gXqEXd0Xukh8BiFIFNyB7bITMaAst5EALw_wcB
+9.https://support.google.com/websearch/answer/10339795?p=cvd19_vaccine_stats&hl=en-LK&visit_id=637683295612323627-2944307113&rd=1
+10.https://support.google.com/websearch/answer/10339795?p=cvd19_vaccine_stats&hl=en-LK&visit_id=637683295612323627-2944307113&rd=1
+
+
+
+
+
+
+
+
